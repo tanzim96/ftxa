@@ -1,0 +1,1769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Focus Tax Accountant - Professional Accounting Services</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --gold: #C9A84C;
+            --gold-light: #F0D98A;
+            --gold-glow: rgba(201,168,76,0.18);
+            --navy: #0A1F44;
+            --navy-mid: #142B5C;
+            --emerald: #1E4D2B;
+            --bg: #F7F6F3;
+            --white: #FFFFFF;
+            --text: #1A1A2E;
+            --muted: #5A5A72;
+            --border: #E3E1DA;
+            --card-shadow: 0 2px 16px rgba(10,31,68,0.08);
+            --radius: 10px;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.65;
+            font-size: 16px;
+        }
+
+        /* ── TYPOGRAPHY ── */
+        h1, h2, h3 { font-family: 'Playfair Display', serif; line-height: 1.2; }
+        h1 { font-size: clamp(2rem, 6vw, 3.4rem); }
+        h2 { font-size: clamp(1.6rem, 4vw, 2.4rem); color: var(--navy); }
+        h3 { font-size: 1.2rem; color: var(--emerald); }
+        h4 { font-size: 1rem; font-weight: 600; color: var(--navy); }
+
+        .container { max-width: 1140px; margin: 0 auto; padding: 0 20px; }
+
+        /* ── HEADER ── */
+        header {
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+            position: sticky; top: 0; z-index: 200;
+            box-shadow: 0 2px 12px rgba(10,31,68,0.06);
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.85rem 0;
+            gap: 1rem;
+        }
+
+        .logo-container {
+            display: flex; align-items: center; gap: 0.65rem;
+            text-decoration: none; flex-shrink: 0;
+            min-height: 48px;
+        }
+        .logo-img {
+            height: 48px; width: 48px;
+            object-fit: contain;
+            flex-shrink: 0;
+            display: block;
+        }
+        .logo-text {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.15rem; font-weight: 700; color: var(--navy); line-height: 1.2;
+            white-space: nowrap;
+        }
+        .logo-text .highlight { color: var(--gold); }
+
+        /* Desktop nav */
+        .nav-links {
+            display: flex; list-style: none; gap: 0.25rem;
+        }
+        .nav-links a {
+            display: block;
+            text-decoration: none;
+            color: var(--muted);
+            font-weight: 500;
+            font-size: 0.88rem;
+            padding: 0.45rem 0.75rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: color 0.2s, background 0.2s;
+            white-space: nowrap;
+        }
+        .nav-links a:hover { color: var(--navy); background: var(--bg); }
+        .nav-links a.active { color: var(--gold); font-weight: 600; background: var(--gold-glow); }
+
+        /* Hamburger */
+        .hamburger {
+            display: none;
+            flex-direction: column; gap: 5px;
+            background: none; border: none; cursor: pointer;
+            padding: 6px; border-radius: 6px;
+        }
+        .hamburger span {
+            display: block; width: 24px; height: 2px;
+            background: var(--navy); border-radius: 2px;
+            transition: transform 0.3s, opacity 0.3s;
+        }
+        .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .hamburger.open span:nth-child(2) { opacity: 0; }
+        .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+        /* Mobile nav drawer */
+        .mobile-nav {
+            display: none;
+            flex-direction: column;
+            background: var(--white);
+            border-top: 1px solid var(--border);
+            padding: 1rem 20px 1.5rem;
+            gap: 0.25rem;
+        }
+        .mobile-nav.open { display: flex; }
+        .mobile-nav a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            font-size: 1rem;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+        }
+        .mobile-nav a:hover, .mobile-nav a.active {
+            background: var(--gold-glow);
+            color: var(--gold);
+            font-weight: 600;
+        }
+        .mobile-nav .cta-mobile {
+            margin-top: 0.5rem;
+            background: var(--gold);
+            color: var(--navy);
+            text-align: center;
+            font-weight: 700;
+            border-radius: 8px;
+        }
+        .mobile-nav .cta-mobile:hover { background: #b8922e; color: var(--navy); }
+
+        @media (max-width: 480px) {
+            nav { padding: 0.65rem 0; gap: 0.5rem; }
+            .logo-container { gap: 0.45rem; min-height: 36px; }
+            .logo-img { height: 36px; width: 36px; }
+            .logo-text { font-size: 0.95rem; }
+        }
+
+        @media (max-width: 360px) {
+            .logo-text { font-size: 0.82rem; }
+        }
+
+        @media (max-width: 820px) {
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
+        }
+
+        /* ── PAGE SYSTEM ── */
+        .page { display: none; }
+        .page.active { display: block; }
+
+        /* ── HERO ── */
+        .hero {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 50%, var(--emerald) 100%);
+            color: var(--white);
+            padding: clamp(3rem, 8vw, 6rem) 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: radial-gradient(ellipse at 60% 40%, rgba(201,168,76,0.12) 0%, transparent 65%);
+            pointer-events: none;
+        }
+        #hero-canvas {
+            position: absolute; inset: 0;
+            width: 100%; height: 100%;
+            pointer-events: none; z-index: 0;
+        }
+        .orb {
+            position: absolute; border-radius: 50%;
+            filter: blur(60px); pointer-events: none; z-index: 0;
+            animation: orbFloat linear infinite;
+        }
+        .orb-1 { width: 320px; height: 320px; background: rgba(201,168,76,0.13); top: -80px; left: -60px; animation-duration: 18s; }
+        .orb-2 { width: 240px; height: 240px; background: rgba(30,77,43,0.25); bottom: -60px; right: 5%; animation-duration: 22s; animation-direction: reverse; }
+        .orb-3 { width: 180px; height: 180px; background: rgba(201,168,76,0.09); top: 40%; left: 55%; animation-duration: 14s; }
+        @keyframes orbFloat {
+            0%   { transform: translate(0, 0) scale(1); }
+            33%  { transform: translate(30px, -20px) scale(1.08); }
+            66%  { transform: translate(-15px, 25px) scale(0.95); }
+            100% { transform: translate(0, 0) scale(1); }
+        }
+        .typewriter-cursor {
+            display: inline-block; width: 2px; height: 0.9em;
+            background: var(--gold-light); margin-left: 3px;
+            vertical-align: middle;
+            animation: blink 0.85s step-end infinite;
+        }
+        @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+        @keyframes heroFadeUp {
+            from { opacity:0; transform: translateY(32px); }
+            to   { opacity:1; transform: none; }
+        }
+        .hero-animate { opacity: 0; animation: heroFadeUp 0.7s ease forwards; }
+        .hero h1    { animation-delay: 0.1s; }
+        .hero .hero-sub  { animation-delay: 0.35s; }
+        .hero .hero-actions { animation-delay: 0.55s; opacity:0; animation: heroFadeUp 0.7s ease 0.55s forwards; }
+        .hero .hero-stats   { animation-delay: 0.75s; opacity:0; animation: heroFadeUp 0.7s ease 0.75s forwards; }
+        .hero .container { position: relative; z-index: 1; }
+        .hero-eyebrow {
+            display: inline-block;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--gold-light);
+            background: rgba(201,168,76,0.15);
+            border: 1px solid rgba(201,168,76,0.35);
+            border-radius: 100px;
+            padding: 0.3rem 1rem;
+            margin-bottom: 1.25rem;
+        }
+        .hero h1 { color: var(--white); margin-bottom: 1rem; }
+        .hero p {
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            opacity: 0.88;
+            max-width: 540px;
+            margin: 0 auto 2rem;
+        }
+        .hero-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+        .cta-button {
+            background: var(--gold);
+            color: var(--navy);
+            padding: 0.85rem 2rem;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            display: inline-block;
+            transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+            border: none;
+        }
+        .cta-button:hover {
+            background: #b8922e;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(201,168,76,0.35);
+        }
+        .cta-outline {
+            background: transparent;
+            color: var(--white);
+            border: 1.5px solid rgba(255,255,255,0.45);
+            padding: 0.85rem 2rem;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            display: inline-block;
+            cursor: pointer;
+            transition: background 0.2s, border-color 0.2s;
+        }
+        .cta-outline:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.7); }
+
+        /* Hero stats strip */
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 0;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+        .stat-item {
+            padding: 1.25rem 2.5rem;
+            border-right: 1px solid rgba(255,255,255,0.15);
+            text-align: center;
+        }
+        .stat-item:last-child { border-right: none; }
+        .stat-number { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: var(--gold-light); line-height: 1; }
+        .stat-label { font-size: 0.78rem; color: rgba(255,255,255,0.65); margin-top: 0.25rem; letter-spacing: 0.04em; }
+
+        @media (max-width: 600px) {
+            .stat-item { padding: 0.9rem 1.5rem; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
+            .stat-item:last-child { border-bottom: none; }
+        }
+
+        /* ── SECTION ── */
+        section { padding: clamp(2.5rem, 6vw, 4.5rem) 0; }
+
+        .section-header { text-align: center; margin-bottom: 2.5rem; }
+        .section-header .eyebrow {
+            display: inline-block; font-size: 0.75rem; font-weight: 600;
+            letter-spacing: 0.12em; text-transform: uppercase;
+            color: var(--gold); margin-bottom: 0.6rem;
+        }
+        .section-header p { color: var(--muted); max-width: 520px; margin: 0.5rem auto 0; }
+
+        /* ── CARDS ── */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.25s, box-shadow 0.25s;
+            border-top: 3px solid var(--gold);
+        }
+        .card:hover { transform: translateY(-4px); box-shadow: 0 8px 28px rgba(10,31,68,0.13); }
+
+        .card-icon {
+            width: 44px; height: 44px; border-radius: 10px;
+            background: var(--gold-glow);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.3rem; margin-bottom: 1rem;
+        }
+
+        /* Service list inside card */
+        .service-list { list-style: none; margin-top: 0.75rem; }
+        .service-list li {
+            padding: 0.35rem 0 0.35rem 1.4rem;
+            color: var(--muted);
+            font-size: 0.9rem;
+            position: relative;
+        }
+        .service-list li::before {
+            content: '✓';
+            position: absolute; left: 0;
+            color: var(--gold); font-weight: 700;
+        }
+
+        /* ── WHY CHOOSE US (home) ── */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+        }
+        .feature-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: var(--card-shadow);
+            border-left: 4px solid var(--gold);
+            transition: transform 0.25s;
+        }
+        .feature-card:hover { transform: translateY(-3px); }
+        .feature-card h4 { font-size: 1.05rem; margin-bottom: 0.5rem; }
+        .feature-card p { color: var(--muted); font-size: 0.92rem; }
+
+        /* ── ABOUT ── */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            align-items: start;
+        }
+        @media (max-width: 720px) { .about-grid { grid-template-columns: 1fr; } }
+
+        .about-text { background: var(--white); border-radius: var(--radius); padding: 2rem; box-shadow: var(--card-shadow); }
+        .about-text p { color: var(--muted); margin-bottom: 1rem; font-size: 0.95rem; line-height: 1.75; }
+        .about-text h3 { margin: 1.25rem 0 0.5rem; }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        .about-stat-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            box-shadow: var(--card-shadow);
+            text-align: center;
+            border-bottom: 3px solid var(--gold);
+        }
+        .about-stat-card .num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: var(--navy); }
+        .about-stat-card .lbl { font-size: 0.8rem; color: var(--muted); margin-top: 0.25rem; }
+
+        /* ── SERVICES ── */
+        .service-category {
+            margin-bottom: 3rem;
+        }
+        .service-category-header {
+            display: flex; align-items: center; gap: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        .service-cat-num {
+            width: 36px; height: 36px; border-radius: 50%;
+            background: var(--gold); color: var(--navy);
+            font-weight: 700; font-size: 0.9rem;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+        }
+        .service-category-header h3 { color: var(--navy); font-size: 1.3rem; margin: 0; }
+        .service-category > p { color: var(--muted); margin-bottom: 1.25rem; font-size: 0.92rem; }
+
+        /* ── TESTIMONIALS ── */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        .testimonial-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: var(--card-shadow);
+            border-top: 3px solid var(--gold);
+            display: flex; flex-direction: column; gap: 1rem;
+        }
+        .stars { color: var(--gold); font-size: 0.9rem; letter-spacing: 2px; }
+        .testimonial-card blockquote {
+            font-style: italic;
+            color: var(--muted);
+            font-size: 0.93rem;
+            line-height: 1.7;
+            flex: 1;
+        }
+        .testimonial-author { font-weight: 600; color: var(--navy); font-size: 0.92rem; }
+        .testimonial-role { font-size: 0.82rem; color: var(--muted); }
+
+        /* ── FORMS ── */
+        .form-wrapper {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: clamp(1.5rem, 4vw, 2.5rem);
+            box-shadow: var(--card-shadow);
+            max-width: 640px;
+            margin: 0 auto;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+        }
+        @media (max-width: 560px) { .form-row { grid-template-columns: 1fr; } }
+
+        .form-group { margin-bottom: 1.25rem; }
+
+        label {
+            display: block;
+            margin-bottom: 0.4rem;
+            font-weight: 500;
+            font-size: 0.88rem;
+            color: var(--text);
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1.5px solid var(--border);
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            color: var(--text);
+            background: var(--bg);
+            transition: border-color 0.2s, box-shadow 0.2s;
+            -webkit-appearance: none;
+        }
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px rgba(201,168,76,0.15);
+            background: var(--white);
+        }
+        textarea { resize: vertical; min-height: 130px; }
+
+        /* ── SUCCESS MESSAGE ── */
+        .success-message {
+            background: #EDF7ED;
+            color: #2E6B30;
+            padding: 1rem 1.25rem;
+            border-radius: 8px;
+            margin-bottom: 1.25rem;
+            display: none;
+            font-size: 0.92rem;
+            border-left: 3px solid #4CAF50;
+        }
+        .success-message.show { display: block; }
+
+        /* ── CONTACT ── */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+        @media (max-width: 640px) { .contact-grid { grid-template-columns: 1fr; } }
+
+        .contact-info-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 1.75rem;
+            box-shadow: var(--card-shadow);
+        }
+        .contact-info-card h3 { font-size: 1.1rem; margin-bottom: 1rem; color: var(--navy); }
+        .contact-info-card p { font-size: 0.9rem; color: var(--muted); margin-bottom: 0.5rem; }
+        .contact-info-card a { color: var(--gold); text-decoration: none; font-weight: 500; }
+        .contact-info-card a:hover { text-decoration: underline; }
+
+        .map-container {
+            width: 100%; height: 380px;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 3rem;
+        }
+        #map { width: 100%; height: 100%; }
+
+        /* ── FOOTER ── */
+        footer {
+            background: var(--navy);
+            color: rgba(255,255,255,0.85);
+            padding: 2.5rem 0;
+            text-align: center;
+        }
+        footer h3 { color: var(--white); font-size: 1.3rem; margin-bottom: 0.75rem; }
+        .footer-links {
+            display: flex; justify-content: center; gap: 1.5rem;
+            flex-wrap: wrap; margin: 1rem 0;
+        }
+        .footer-links a { color: var(--gold); text-decoration: none; font-weight: 500; font-size: 0.95rem; }
+        .footer-links a:hover { text-decoration: underline; }
+        footer p { font-size: 0.85rem; opacity: 0.6; margin-top: 1rem; }
+
+        /* ── FLOATING CTA (mobile) ── */
+        .floating-cta {
+            display: none;
+            position: fixed; bottom: 1.25rem; right: 1.25rem; z-index: 300;
+        }
+        .floating-cta a {
+            background: var(--gold);
+            color: var(--navy);
+            font-weight: 700;
+            font-size: 0.9rem;
+            padding: 0.9rem 1.5rem;
+            border-radius: 100px;
+            text-decoration: none;
+            box-shadow: 0 6px 20px rgba(201,168,76,0.45);
+            display: flex; align-items: center; gap: 0.4rem;
+        }
+        @media (max-width: 820px) { .floating-cta { display: block; } }
+
+        /* ── SCROLL REVEAL ── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.55s ease, transform 0.55s ease;
+        }
+        .reveal.visible { opacity: 1; transform: none; }
+        @media (prefers-reduced-motion: reduce) {
+            .reveal { opacity: 1; transform: none; }
+        }
+
+        /* ══════════════════════════════════════
+           PER-PAGE ANIMATIONS
+        ══════════════════════════════════════ */
+
+        /* Page banner header shared */
+        .page-banner {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 55%, var(--emerald) 100%);
+            padding: 3.5rem 0 2.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .page-banner h2 { color: var(--white); margin-bottom: 0.5rem; font-size: clamp(1.8rem,4vw,2.6rem); }
+        .page-banner p  { color: rgba(255,255,255,0.75); font-size: 1rem; max-width: 520px; margin: 0 auto; }
+        .page-banner .eyebrow {
+            display: inline-block; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em;
+            text-transform: uppercase; color: var(--gold-light);
+            background: rgba(201,168,76,0.18); border: 1px solid rgba(201,168,76,0.35);
+            border-radius: 100px; padding: 0.28rem 0.9rem; margin-bottom: 0.75rem;
+        }
+        /* mini particle canvas per banner */
+        .page-banner canvas {
+            position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0;
+        }
+        .page-banner .banner-content { position: relative; z-index: 1; }
+        /* banner orbs */
+        .page-banner .b-orb {
+            position: absolute; border-radius: 50%; filter: blur(50px); pointer-events: none; z-index: 0;
+            animation: orbFloat linear infinite;
+        }
+
+        /* ── stagger helpers ── */
+        .stagger-item {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.55s ease, transform 0.55s ease;
+        }
+        .stagger-item.from-left  { transform: translateX(-40px); }
+        .stagger-item.from-right { transform: translateX(40px); }
+        .stagger-item.scale-in   { transform: scale(0.88); }
+        .stagger-item.visible    { opacity: 1 !important; transform: none !important; }
+
+        /* ── ABOUT page ── */
+        .about-stat-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .about-stat-card:hover {
+            transform: translateY(-6px) scale(1.04);
+            box-shadow: 0 10px 28px rgba(10,31,68,0.14);
+        }
+        .about-stat-card .num {
+            transition: color 0.3s;
+        }
+        .about-stat-card:hover .num { color: var(--gold); }
+
+        /* expertise list items animate in */
+        .expertise-item {
+            opacity: 0; transform: translateX(-20px);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+        .expertise-item.visible { opacity: 1; transform: none; }
+
+        /* ── SERVICES page ── */
+        .service-category-header {
+            position: relative;
+        }
+        .service-cat-num {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .service-category:hover .service-cat-num {
+            transform: scale(1.15) rotate(8deg);
+            box-shadow: 0 4px 14px rgba(201,168,76,0.4);
+        }
+        /* card icon bounce */
+        .card-icon {
+            transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
+        }
+        .card:hover .card-icon { transform: scale(1.25) rotate(-6deg); }
+
+        /* ── TESTIMONIALS page ── */
+        .testimonial-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative; overflow: hidden;
+        }
+        .testimonial-card::after {
+            content: '"';
+            position: absolute; bottom: -10px; right: 16px;
+            font-family: 'Playfair Display', serif;
+            font-size: 7rem; line-height: 1;
+            color: var(--gold); opacity: 0.08; pointer-events: none;
+        }
+        /* shimmer sweep on hover */
+        .testimonial-card::before {
+            content: '';
+            position: absolute; top: 0; left: -100%; width: 60%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.07), transparent);
+            transition: left 0.55s ease;
+            pointer-events: none;
+        }
+        .testimonial-card:hover::before { left: 150%; }
+
+        /* star rating pop */
+        .stars { display: inline-block; }
+        .stars .star {
+            display: inline-block;
+            opacity: 0; transform: translateY(8px) scale(0.7);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        .testimonial-card.visible .stars .star {
+            opacity: 1; transform: none;
+        }
+
+        /* ── BOOKING / CONTACT forms ── */
+        .form-wrapper {
+            position: relative; overflow: hidden;
+        }
+        .form-group input, .form-group textarea, .form-group select {
+            transition: border-color 0.25s, box-shadow 0.25s, transform 0.2s;
+        }
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+            transform: scale(1.01);
+        }
+        /* form label float effect */
+        .form-group { position: relative; }
+
+        /* progress dots for booking steps feel */
+        .form-progress {
+            display: flex; justify-content: center; gap: 0.5rem; margin-bottom: 1.75rem;
+        }
+        .form-progress-dot {
+            width: 8px; height: 8px; border-radius: 50%;
+            background: var(--border);
+            transition: background 0.3s, transform 0.3s;
+        }
+        .form-progress-dot.active { background: var(--gold); transform: scale(1.4); }
+
+        /* floating label anim */
+        .cta-button {
+            position: relative; overflow: hidden;
+        }
+        .cta-button::after {
+            content: '';
+            position: absolute; inset: 0;
+            background: rgba(255,255,255,0.18);
+            transform: translateX(-100%) skewX(-15deg);
+            transition: transform 0.45s ease;
+            pointer-events: none;
+        }
+        .cta-button:hover::after { transform: translateX(140%) skewX(-15deg); }
+
+        /* ── section divider wave ── */
+        .wave-divider {
+            line-height: 0; overflow: hidden;
+        }
+        .wave-divider svg { display: block; width: 100%; }
+
+        /* ── page-in animation for entire page ── */
+        @keyframes pageSlideIn {
+            from { opacity: 0; transform: translateY(18px); }
+            to   { opacity: 1; transform: none; }
+        }
+        .page.active > * {
+            animation: pageSlideIn 0.45s ease forwards;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .stagger-item, .expertise-item { opacity:1; transform:none; }
+            .page.active > * { animation: none; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ═══════════════════ HEADER ═══════════════════ -->
+<header>
+    <div class="container">
+        <nav>
+            <a class="logo-container" href="#" onclick="showPage('home'); return false;">
+                <img src="logo.png" alt="Focus Tax Accountant Logo" class="logo-img" width="48" height="48" decoding="async">
+                <div class="logo-text">Focus <span class="highlight">Tax</span> Accountant</div>
+            </a>
+
+            <ul class="nav-links">
+                <li><a class="nav-link active" data-page="home">Home</a></li>
+                <li><a class="nav-link" data-page="about">About</a></li>
+                <li><a class="nav-link" data-page="services">Services</a></li>
+                <li><a class="nav-link" data-page="testimonials">Testimonials</a></li>
+                <li><a class="nav-link" data-page="booking">Book Appointment</a></li>
+                <li><a class="nav-link" data-page="contact">Contact</a></li>
+            </ul>
+
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </nav>
+    </div>
+
+    <nav class="mobile-nav" id="mobileNav">
+        <a class="nav-link" data-page="home">Home</a>
+        <a class="nav-link" data-page="about">About</a>
+        <a class="nav-link" data-page="services">Services</a>
+        <a class="nav-link" data-page="testimonials">Testimonials</a>
+        <a class="nav-link" data-page="contact">Contact</a>
+        <a class="nav-link cta-mobile" data-page="booking">📅 Book Appointment</a>
+    </nav>
+</header>
+
+<!-- ═══════════════════ HOME ═══════════════════ -->
+<div id="home" class="page active">
+
+    <div class="hero">
+        <canvas id="hero-canvas"></canvas>
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+        <div class="container">
+            <h1 class="hero-animate">Expert Accounting &amp; <span id="typewriter-target"></span><span class="typewriter-cursor"></span></h1>
+            <p class="hero-animate" style="animation-delay:0.35s">Focus on accuracy. Driven by results. Your trusted partner in financial clarity and business growth.</p>
+            <div class="hero-actions hero-animate" style="animation-delay:0.55s; opacity:0; animation: heroFadeUp 0.7s ease 0.55s forwards;">
+                <button class="cta-button" onclick="showPage('booking')">Book a Free Consultation</button>
+                <button class="cta-outline" onclick="showPage('services')">Explore Services</button>
+            </div>
+            <div class="hero-stats hero-animate" style="animation-delay:0.75s; opacity:0; animation: heroFadeUp 0.7s ease 0.75s forwards;">
+                <div class="stat-item">
+                    <div class="stat-number" data-count="20" data-suffix="+">0</div>
+                    <div class="stat-label">Years Experience</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-count="500" data-suffix="+">0</div>
+                    <div class="stat-label">Clients Served</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-count="100" data-suffix="%">0</div>
+                    <div class="stat-label">Compliance Rate</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section>
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="eyebrow">Why Choose Us</span>
+                <h2>Accounting that moves your business forward</h2>
+                <p>We go beyond compliance — turning your numbers into the insights that drive smart decisions.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card reveal">
+                    <div class="card-icon">🎯</div>
+                    <h4>Compliance &amp; Clarity</h4>
+                    <p>Accurate reporting and tax compliance at every cycle, giving you full confidence in your financial position.</p>
+                </div>
+                <div class="feature-card reveal">
+                    <div class="card-icon">📈</div>
+                    <h4>Strategic Planning</h4>
+                    <p>Forward-looking advice that transforms your financials into an actionable roadmap for growth.</p>
+                </div>
+                <div class="feature-card reveal">
+                    <div class="card-icon">🏗️</div>
+                    <h4>Expert Setup</h4>
+                    <p>The right business structure from day one — streamlined compliance and proactive risk management built in.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<!-- ═══════════════════ ABOUT ═══════════════════ -->
+<div id="about" class="page">
+    <div class="page-banner">
+        <canvas class="banner-canvas"></canvas>
+        <div class="b-orb" style="width:280px;height:280px;background:rgba(201,168,76,0.12);top:-80px;right:-40px;animation-duration:20s"></div>
+        <div class="b-orb" style="width:180px;height:180px;background:rgba(30,77,43,0.2);bottom:-40px;left:5%;animation-duration:16s;animation-direction:reverse"></div>
+        <div class="banner-content">
+            <span class="eyebrow">Who We Are</span>
+            <h2>About Focus Tax Accountant</h2>
+            <p>Your trusted accounting partner in Perth, WA</p>
+        </div>
+    </div>
+    <section>
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-text stagger-item from-left">
+                    <p>At Focus Tax Accountant, we believe great accounting is more than just compliance — it's a strategic partnership. With decades of experience serving businesses across multiple industries, we understand the unique challenges Australian businesses face.</p>
+                    <p>Our team delivers clear, actionable financial advice that helps your business grow. We take the complexity out of accounting and tax so you can focus on what you do best — running your business.</p>
+                    <h3>Our Approach</h3>
+                    <p>We combine technical expertise with genuine care for our clients' success. Whether you're a sole trader, small business owner, or growing company, we tailor our services to your specific needs and goals.</p>
+                    <h3>Our Expertise</h3>
+                    <ul class="service-list" style="margin-top: 0.5rem;">
+                        <li class="expertise-item">20+ years of accounting and tax experience</li>
+                        <li class="expertise-item">Specialists in small to medium business accounting</li>
+                        <li class="expertise-item">Up-to-date with latest tax legislation and ATO requirements</li>
+                        <li class="expertise-item">Proven track record of optimising business tax positions</li>
+                        <li class="expertise-item">Committed to ongoing professional development</li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="about-stats">
+                        <div class="about-stat-card stagger-item scale-in" style="transition-delay:0.1s">
+                            <div class="num" data-count="20" data-suffix="+">0+</div>
+                            <div class="lbl">Years in practice</div>
+                        </div>
+                        <div class="about-stat-card stagger-item scale-in" style="transition-delay:0.2s">
+                            <div class="num" data-count="500" data-suffix="+">0+</div>
+                            <div class="lbl">Clients served</div>
+                        </div>
+                        <div class="about-stat-card stagger-item scale-in" style="transition-delay:0.3s">
+                            <div class="num" data-count="3" data-suffix="">0</div>
+                            <div class="lbl">Core service pillars</div>
+                        </div>
+                        <div class="about-stat-card stagger-item scale-in" style="transition-delay:0.4s">
+                            <div class="num" data-count="100" data-suffix="%">0%</div>
+                            <div class="lbl">Compliance focused</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- ═══════════════════ SERVICES ═══════════════════ -->
+<div id="services" class="page">
+    <div class="page-banner">
+        <canvas class="banner-canvas"></canvas>
+        <div class="b-orb" style="width:260px;height:260px;background:rgba(201,168,76,0.11);top:-60px;left:-30px;animation-duration:19s"></div>
+        <div class="b-orb" style="width:200px;height:200px;background:rgba(30,77,43,0.18);bottom:-50px;right:8%;animation-duration:24s;animation-direction:reverse"></div>
+        <div class="banner-content">
+            <span class="eyebrow">What We Do</span>
+            <h2>Our Services</h2>
+            <p>Three pillars of service covering every stage of your business journey.</p>
+        </div>
+    </div>
+    <section>
+        <div class="container">
+
+            <!-- 1. Accounting & Tax -->
+            <div class="service-category reveal">
+                <div class="service-category-header">
+                    <div class="service-cat-num">1</div>
+                    <h3>Accounting &amp; Tax</h3>
+                </div>
+                <p>Compliance, clarity, and confidence at every reporting cycle.</p>
+                <div class="cards-grid">
+                    <div class="card stagger-item">
+                        <div class="card-icon">📊</div>
+                        <h4>Financial Statements</h4>
+                        <ul class="service-list">
+                            <li>Accurate year-end preparation</li>
+                            <li>Regular financial reporting</li>
+                            <li>Balance sheet &amp; income statements</li>
+                        </ul>
+                    </div>
+                    <div class="card stagger-item">
+                        <div class="card-icon">📋</div>
+                        <h4>Business Activity Statements</h4>
+                        <ul class="service-list">
+                            <li>Timely BAS lodgement</li>
+                            <li>GST compliance</li>
+                            <li>Regular reporting</li>
+                        </ul>
+                    </div>
+                    <div class="card stagger-item">
+                        <div class="card-icon">💼</div>
+                        <h4>Bookkeeping &amp; Payroll</h4>
+                        <ul class="service-list">
+                            <li>Complete bookkeeping services</li>
+                            <li>Payroll management</li>
+                            <li>Tax compliance reporting</li>
+                        </ul>
+                    </div>
+                    <div class="card stagger-item">
+                        <div class="card-icon">🗓️</div>
+                        <h4>Tax Planning</h4>
+                        <ul class="service-list">
+                            <li>Personal tax strategy</li>
+                            <li>Business tax optimisation</li>
+                            <li>Year-round planning</li>
+                        </ul>
+                    </div>
+                    <div class="card stagger-item">
+                        <div class="card-icon">🏦</div>
+                        <h4>GST &amp; SMSF</h4>
+                        <ul class="service-list">
+                            <li>GST advice and compliance</li>
+                            <li>Self-managed superannuation funds</li>
+                            <li>SMSF audit services</li>
+                        </ul>
+                    </div>
+                    <div class="card stagger-item">
+                        <div class="card-icon">✅</div>
+                        <h4>Tax Compliance</h4>
+                        <ul class="service-list">
+                            <li>Income tax returns</li>
+                            <li>Company tax returns</li>
+                            <li>Trust tax returns</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. Business Advisory -->
+            <div class="service-category reveal">
+                <div class="service-category-header">
+                    <div class="service-cat-num">2</div>
+                    <h3>Business Advisory</h3>
+                </div>
+                <p>Forward-looking strategy that turns numbers into decisions.</p>
+                <div class="cards-grid">
+                    <div class="card stagger-item">
+                        <div class="card-icon">🗺️</div>
+                        <h4>Strategic Planning</h4>
+                        <ul class="service-list">
+                            <li>Business growth strategy</li>
+                            <li>Financial roadmaps</li>
+                            <li>Goal setting &amp; monitoring</li>
+                        </ul>
+                    </div>
+                    <div class="card stagger-item">
+                        <div class="card-icon">💰</div>
+                        <h4>Financial Management</h4>
+                        <ul class="service-list">
+                            <li>Cash flow management</li>
+                            <li>Budget &amp; variance analysis</li>
+                            <li>Financial controls setup</li>
+                        </ul>
+                    </div>
+                    <div class="card stagger-item">
+                        <div class="card-icon">📉</div>
+                        <h4>KPIs &amp; Performance</h4>
+                        <ul class="service-list">
+                            <li>Performance metrics setup</li>
+                            <li>KPI monitoring</li>
+                            <li>Business performance analysis</li>
+                        </ul>
+                    </div>
+                    <div class="card stagger-item">
+                        <div class="card-icon">🔮</div>
+                        <h4>Technology &amp; Forecasting</h4>
+                        <ul class="service-list">
+                            <li>Technology integration</li>
+                            <li>Financial forecasting</li>
+                            <li>Scenario planning</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. Business Structures -->
+            <div class="service-category reveal">
+                <div class="service-category-header">
+                    <div class="service-cat-num">3</div>
+                    <h3>Business Structures</h3>
+                </div>
+                <p>The right foundation — set up correctly from day one.</p>
+                <div class="cards-grid">
+                    <div class="card stagger-item">
+                        <div class="card-icon">🏢</div>
+                        <h4>Structure Setup</h4>
+                        <ul class="service-list">
+                            <li>Sole trader setup</li>
+                            <li>Partnership structures</li>
+                            <li>Company registration</li>
+                            <li>Trust structure setup</li>
+                        </ul>
+                    </div>
+                    <div class="card stagger-item">
+                        <div class="card-icon">📝</div>
+                        <h4>Registrations &amp; Compliance</h4>
+                        <ul class="service-list">
+                            <li>ABN registration</li>
+                            <li>TFN registration</li>
+                            <li>GST registration</li>
+                            <li>Streamlined compliance</li>
+                        </ul>
+                    </div>
+                    <div class="card stagger-item">
+                        <div class="card-icon">🛡️</div>
+                        <h4>Risk Management</h4>
+                        <ul class="service-list">
+                            <li>Risk assessment</li>
+                            <li>Compliance strategy</li>
+                            <li>Proactive management</li>
+                            <li>Documentation support</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+</div>
+
+<!-- ═══════════════════ TESTIMONIALS ═══════════════════ -->
+<div id="testimonials" class="page">
+    <div class="page-banner">
+        <canvas class="banner-canvas"></canvas>
+        <div class="b-orb" style="width:300px;height:300px;background:rgba(201,168,76,0.1);top:-70px;right:10%;animation-duration:17s"></div>
+        <div class="b-orb" style="width:160px;height:160px;background:rgba(30,77,43,0.22);bottom:-30px;left:15%;animation-duration:21s;animation-direction:reverse"></div>
+        <div class="banner-content">
+            <span class="eyebrow">Client Stories</span>
+            <h2>What Our Clients Say</h2>
+            <p>Real results from real businesses across Perth and WA.</p>
+        </div>
+    </div>
+    <section>
+        <div class="container">
+            <div class="testimonials-grid">
+                <div class="testimonial-card reveal">
+                    <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+                    <blockquote>"Focus Tax Accountant transformed our financial management. They helped us understand our numbers and make better business decisions. Highly recommended!"</blockquote>
+                    <div>
+                        <div class="testimonial-author">Sarah Mitchell</div>
+                        <div class="testimonial-role">Director, Tech Startup</div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal">
+                    <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+                    <blockquote>"Professional, knowledgeable, and genuinely interested in our business success. They saved us thousands in tax and improved our compliance significantly."</blockquote>
+                    <div>
+                        <div class="testimonial-author">James Chen</div>
+                        <div class="testimonial-role">Owner, Manufacturing Business</div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal">
+                    <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+                    <blockquote>"Finally, an accountant who explains things clearly and doesn't make it overly complicated. Great service and reasonable fees. We trust them completely."</blockquote>
+                    <div>
+                        <div class="testimonial-author">Michelle Roberts</div>
+                        <div class="testimonial-role">Manager, Professional Services</div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal">
+                    <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+                    <blockquote>"Their strategic advice helped us restructure our business and optimise our tax position. They're true partners in our growth journey."</blockquote>
+                    <div>
+                        <div class="testimonial-author">David Foster</div>
+                        <div class="testimonial-role">Owner, Consulting Firm</div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal">
+                    <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+                    <blockquote>"Excellent service from start to finish. The team is responsive, professional, and always ready to help. We couldn't ask for better accountants."</blockquote>
+                    <div>
+                        <div class="testimonial-author">Lisa Thompson</div>
+                        <div class="testimonial-role">Director, Real Estate Agency</div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal">
+                    <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+                    <blockquote>"Focus Tax Accountant has been instrumental in our financial planning. Their insights have directly contributed to our profitability."</blockquote>
+                    <div>
+                        <div class="testimonial-author">Robert Morrison</div>
+                        <div class="testimonial-role">CEO, Import/Export Company</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- ═══════════════════ BOOKING ═══════════════════ -->
+<div id="booking" class="page">
+    <div class="page-banner">
+        <canvas class="banner-canvas"></canvas>
+        <div class="b-orb" style="width:240px;height:240px;background:rgba(201,168,76,0.13);top:-50px;left:10%;animation-duration:15s"></div>
+        <div class="b-orb" style="width:200px;height:200px;background:rgba(30,77,43,0.2);bottom:-40px;right:5%;animation-duration:22s;animation-direction:reverse"></div>
+        <div class="banner-content">
+            <span class="eyebrow">Get Started</span>
+            <h2>Book an Appointment</h2>
+            <p>Schedule a consultation — we'll confirm within 24 hours.</p>
+        </div>
+    </div>
+    <section>
+        <div class="container">
+            <div class="form-wrapper stagger-item">
+                <div class="success-message" id="bookingSuccessMessage">
+                    ✅ Thank you! Your appointment request has been received. We'll confirm within 24 hours.
+                </div>
+                <form action="https://api.web3forms.com/submit" method="POST">
+                    <input type="hidden" name="access_key" value="cbeef86b-f6f1-4540-92ae-cb7b684e8f94">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="b-name">Full Name *</label>
+                            <input type="text" id="b-name" name="name" required placeholder="Jane Smith">
+                        </div>
+                        <div class="form-group">
+                            <label for="b-email">Email Address *</label>
+                            <input type="email" id="b-email" name="email" required placeholder="jane@example.com">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="b-phone">Phone Number *</label>
+                            <input type="tel" id="b-phone" name="phone" required placeholder="04XX XXX XXX">
+                        </div>
+                        <div class="form-group">
+                            <label for="b-company">Company Name</label>
+                            <input type="text" id="b-company" name="company" placeholder="Optional">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="b-service">Service Needed *</label>
+                        <select id="b-service" name="service" required>
+                            <option value="">Select a service</option>
+                            <option value="accounting">Accounting &amp; Tax</option>
+                            <option value="advisory">Business Advisory</option>
+                            <option value="structures">Business Structures</option>
+                            <option value="other">Other — please specify below</option>
+                        </select>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="b-date">Preferred Date *</label>
+                            <input type="date" id="b-date" name="date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="b-time">Preferred Time *</label>
+                            <select id="b-time" name="time" required>
+                                <option value="">Select a time</option>
+                                <option value="09:00">9:00 AM</option>
+                                <option value="09:30">9:30 AM</option>
+                                <option value="10:00">10:00 AM</option>
+                                <option value="10:30">10:30 AM</option>
+                                <option value="11:00">11:00 AM</option>
+                                <option value="11:30">11:30 AM</option>
+                                <option value="12:00">12:00 PM</option>
+                                <option value="14:00">2:00 PM</option>
+                                <option value="14:30">2:30 PM</option>
+                                <option value="15:00">3:00 PM</option>
+                                <option value="15:30">3:30 PM</option>
+                                <option value="16:00">4:00 PM</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="b-message">Additional Information</label>
+                        <textarea id="b-message" name="message" placeholder="Tell us more about your needs..."></textarea>
+                    </div>
+                    <button type="submit" class="cta-button" style="width: 100%; padding: 1rem;">Request Appointment</button>
+                </form>
+            </div>
+
+            <div style="text-align: center; margin-top: 2.5rem; padding: 1.75rem; background: var(--white); border-radius: var(--radius); box-shadow: var(--card-shadow); max-width: 640px; margin-left: auto; margin-right: auto;" class="reveal">
+                <h3 style="color: var(--navy); margin-bottom: 0.5rem; font-size: 1.1rem;">Prefer to call?</h3>
+                <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 0.75rem;">We're available Monday–Friday, 9 AM – 5 PM AWST.</p>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="tel:0421067488" class="cta-button" style="font-size: 0.9rem; padding: 0.7rem 1.5rem;">📞 0421 067 488</a>
+                    <a href="mailto:info@ftxa.com.au" class="cta-button" style="font-size: 0.9rem; padding: 0.7rem 1.5rem; background: var(--navy); color: var(--white);">✉️ Email Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- ═══════════════════ CONTACT ═══════════════════ -->
+<div id="contact" class="page">
+    <div class="page-banner">
+        <canvas class="banner-canvas"></canvas>
+        <div class="b-orb" style="width:260px;height:260px;background:rgba(201,168,76,0.11);top:-60px;right:5%;animation-duration:18s"></div>
+        <div class="b-orb" style="width:180px;height:180px;background:rgba(30,77,43,0.19);bottom:-40px;left:8%;animation-duration:23s;animation-direction:reverse"></div>
+        <div class="banner-content">
+            <span class="eyebrow">Find Us</span>
+            <h2>Contact Us</h2>
+            <p>We'd love to hear from you. Visit us in Cannington, WA.</p>
+        </div>
+    </div>
+    <section>
+        <div class="container">
+
+            <div class="contact-grid reveal">
+                <div class="contact-info-card stagger-item">
+                    <h3>📍 Visit Us</h3>
+                    <p><strong>Address</strong></p>
+                    <p>Unit 4/12 Burton Street<br>Cannington WA 6107<br>Australia</p>
+                    <p style="margin-top: 0.75rem;"><a href="https://www.google.com/maps/search/?api=1&query=Unit%204%2F12%20Burton%20St%2C%20Cannington%20WA%206107" target="_blank">Open in Google Maps →</a></p>
+                </div>
+                <div class="contact-info-card stagger-item">
+                    <h3>📞 Get in Touch</h3>
+                    <p><strong>Phone</strong><br><a href="tel:0421067488">0421 067 488</a></p>
+                    <p style="margin-top: 0.75rem;"><strong>Email</strong><br><a href="mailto:info@ftxa.com.au">info@ftxa.com.au</a></p>
+                    <p style="margin-top: 0.75rem;"><strong>Hours</strong><br>Monday – Friday<br>9:00 AM – 5:00 PM AWST</p>
+                </div>
+            </div>
+
+            <div class="map-container reveal">
+                <div id="map"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3383.166007478669!2d115.9244207!3d-32.0106166!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2a32bc38b65aaaab%3A0xce18b2784c7523d!2sUnit%204%2F12%20Burton%20St%2C%20Cannington%20WA%206107%2C%20Australia!5e0!3m2!1sen!2sbd!4v1781943062022!5m2!1sen!2sbd" width="1100" height="450" style="border:0;" allowfullscreen="yes" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+            </div>
+
+            <div class="section-header reveal" style="margin-bottom: 1.5rem;">
+                <h3 style="font-size: 1.5rem; color: var(--navy);">Send Us a Message</h3>
+            </div>
+            <div class="form-wrapper stagger-item">
+                <div class="success-message" id="successMessage">
+                    ✅ Thank you for your message! We'll be in touch soon.
+                </div>
+                <form action="https://api.web3forms.com/submit" method="POST">
+                    <input type="hidden" name="access_key" value="cbeef86b-f6f1-4540-92ae-cb7b684e8f94">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" name="name" required placeholder="Jane Smith">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required placeholder="jane@example.com">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" placeholder="04XX XXX XXX">
+                        </div>
+                        <div class="form-group">
+                            <label for="company">Company Name</label>
+                            <input type="text" id="company" name="company" placeholder="Optional">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="service">Interested In *</label>
+                        <select id="service" name="service" required>
+                            <option value="">Select a service</option>
+                            <option value="accounting">Accounting &amp; Tax</option>
+                            <option value="advisory">Business Advisory</option>
+                            <option value="structures">Business Structures</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea id="message" name="message" required placeholder="How can we help you?"></textarea>
+                    </div>
+                    <button type="submit" class="cta-button" id="contactSubmitBtn" style="width: 100%; padding: 1rem;">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- ═══════════════════ FOOTER ═══════════════════ -->
+<footer>
+    <div class="container">
+        <h3>Focus Tax Accountant</h3>
+        <p style="color: rgba(255,255,255,0.65); font-size: 0.9rem;">Professional Accounting &amp; Tax Advisory Services — Perth, WA</p>
+        <div class="footer-links">
+            <a href="mailto:info@ftxa.com.au">info@ftxa.com.au</a>
+            <a href="tel:0421067488">0421 067 488</a>
+        </div>
+        <p>&copy; 2025 Focus Tax Accountant. All rights reserved.</p>
+    </div>
+</footer>
+
+<!-- Floating CTA (mobile) -->
+<div class="floating-cta">
+    <a href="#" onclick="showPage('booking'); return false;">📅 Book Now</a>
+</div>
+
+<script>
+    // ── Hamburger menu ──
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobileNav');
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('open');
+        mobileNav.classList.toggle('open');
+    });
+
+    // ── Navigation ──
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            showPage(this.dataset.page);
+            // update active state desktop & mobile
+            document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+            document.querySelectorAll(`.nav-link[data-page="${this.dataset.page}"]`).forEach(l => l.classList.add('active'));
+            // close mobile menu
+            hamburger.classList.remove('open');
+            mobileNav.classList.remove('open');
+        });
+    });
+
+    function showPage(name) {
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+        document.getElementById(name).classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        if (name === 'contact') setTimeout(initMap, 150);
+        // Trigger reveal animations for new page
+        setTimeout(observeReveals, 50);
+    }
+
+    // ── Scroll reveal ──
+    function observeReveals() {
+        const els = document.querySelectorAll('.page.active .reveal:not(.visible)');
+        if ('IntersectionObserver' in window) {
+            const obs = new IntersectionObserver((entries) => {
+                entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+            }, { threshold: 0.1 });
+            els.forEach(el => obs.observe(el));
+        } else {
+            els.forEach(el => el.classList.add('visible'));
+        }
+    }
+    observeReveals();
+
+    // ── Google Map ──
+    function initMap() {
+        const loc = { lat: -32.0093, lng: 115.8827 };
+        if (!window.google || !document.getElementById('map')) return;
+        const map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 15, center: loc,
+            styles: [{ featureType: 'all', elementType: 'labels.text.fill', stylers: [{ color: '#2C2C2C' }] }]
+        });
+        const marker = new google.maps.Marker({
+            position: loc, map,
+            title: 'Focus Tax Accountant',
+            icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
+        });
+        const info = new google.maps.InfoWindow({
+            content: `<div style="padding:10px;font-family:Inter,sans-serif">
+                <strong style="color:#0A1F44">Focus Tax Accountant</strong>
+                <p style="margin:4px 0;color:#666;font-size:0.9rem">Unit 4/12 Burton Street<br>Cannington WA 6107</p>
+                <a href="tel:0421067488" style="color:#C9A84C;text-decoration:none;font-weight:600">0421 067 488</a>
+            </div>`
+        });
+        marker.addListener('click', () => info.open(map, marker));
+        info.open(map, marker);
+    }
+    window.addEventListener('load', initMap);
+
+    // ── Contact form ──
+    function handleSubmit(e) {
+        e.preventDefault();
+        const btn = document.getElementById('contactSubmitBtn');
+        btn.disabled = true; btn.textContent = 'Sending…';
+        const payload = {
+            name: document.getElementById('name').value,
+            email: document.getElementById('email').value,
+            phone: document.getElementById('phone').value,
+            company: document.getElementById('company').value,
+            service: document.getElementById('service').value,
+            message: document.getElementById('message').value,
+        };
+        fetch('/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
+            .then(r => r.json())
+            .then(d => {
+                if (d.success) {
+                    document.getElementById('successMessage').classList.add('show');
+                    document.getElementById('contactForm').reset();
+                    setTimeout(() => document.getElementById('successMessage').classList.remove('show'), 5000);
+                } else { alert('Error: ' + (d.error || 'Failed to send message')); }
+            })
+            .catch(() => alert('Error sending message. Please call us at 0421 067 488'))
+            .finally(() => { btn.disabled = false; btn.textContent = 'Send Message'; });
+    }
+
+    // ── Booking form ──
+    function handleBookingSubmit(e) {
+        e.preventDefault();
+        const btn = e.target.querySelector('button[type="submit"]');
+        btn.disabled = true; btn.textContent = 'Submitting…';
+        const payload = {
+            name: document.getElementById('b-name').value,
+            email: document.getElementById('b-email').value,
+            phone: document.getElementById('b-phone').value,
+            company: document.getElementById('b-company').value,
+            service: document.getElementById('b-service').value,
+            date: document.getElementById('b-date').value,
+            time: document.getElementById('b-time').value,
+            message: document.getElementById('b-message').value,
+        };
+        fetch('/api/booking', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
+            .then(r => r.json())
+            .then(d => {
+                if (d.success) {
+                    document.getElementById('bookingSuccessMessage').classList.add('show');
+                    document.getElementById('bookingForm').reset();
+                    setTimeout(() => document.getElementById('bookingSuccessMessage').classList.remove('show'), 5000);
+                } else { alert('Error: ' + (d.error || 'Failed to submit booking')); }
+            })
+            .catch(() => alert('Error submitting booking. Please call us at 0421 067 488'))
+            .finally(() => { btn.disabled = false; btn.textContent = 'Request Appointment'; });
+    }
+
+    // ── Hero Particle Canvas ──
+    (function() {
+        const canvas = document.getElementById('hero-canvas');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        let W, H;
+        const COUNT = 55;
+        const particles = [];
+
+        function resize() {
+            W = canvas.width  = canvas.offsetWidth;
+            H = canvas.height = canvas.offsetHeight;
+        }
+        resize();
+        window.addEventListener('resize', resize);
+
+        function rand(a, b) { return a + Math.random() * (b - a); }
+
+        for (let i = 0; i < COUNT; i++) {
+            particles.push({ x: rand(0,1200), y: rand(0,500), vx: rand(-0.3,0.3), vy: rand(-0.22,0.22), r: rand(1.2,2.8), alpha: rand(0.25,0.65) });
+        }
+
+        function draw() {
+            resize();
+            ctx.clearRect(0, 0, W, H);
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i+1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x, dy = particles[i].y - particles[j].y;
+                    const dist = Math.sqrt(dx*dx + dy*dy);
+                    if (dist < 110) {
+                        ctx.beginPath(); ctx.moveTo(particles[i].x, particles[i].y); ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.strokeStyle = `rgba(201,168,76,${0.13*(1-dist/110)})`; ctx.lineWidth = 0.8; ctx.stroke();
+                    }
+                }
+            }
+            particles.forEach(p => {
+                ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
+                ctx.fillStyle = `rgba(240,217,138,${p.alpha})`; ctx.fill();
+                p.x += p.vx; p.y += p.vy;
+                if (p.x < 0) p.x = W; if (p.x > W) p.x = 0;
+                if (p.y < 0) p.y = H; if (p.y > H) p.y = 0;
+            });
+            requestAnimationFrame(draw);
+        }
+        requestAnimationFrame(draw);
+    })();
+
+    // ── Typewriter Effect ──
+    (function() {
+        const el = document.getElementById('typewriter-target');
+        if (!el) return;
+        const phrases = ['Tax Advisory', 'Business Growth', 'Smart Decisions', 'Financial Clarity'];
+        let pi = 0, ci = 0, deleting = false;
+        function tick() {
+            const phrase = phrases[pi];
+            if (!deleting) {
+                el.textContent = phrase.slice(0, ++ci);
+                if (ci === phrase.length) { deleting = true; setTimeout(tick, 2000); return; }
+            } else {
+                el.textContent = phrase.slice(0, --ci);
+                if (ci === 0) { deleting = false; pi = (pi+1) % phrases.length; setTimeout(tick, 400); return; }
+            }
+            setTimeout(tick, deleting ? 45 : 80);
+        }
+        setTimeout(tick, 900);
+    })();
+
+    // ── Stat Counter Animation ──
+    (function() {
+        function animateCounter(el) {
+            const target = parseInt(el.dataset.count);
+            const suffix = el.dataset.suffix || '';
+            const duration = 1600, start = performance.now();
+            function step(now) {
+                const t = Math.min((now - start) / duration, 1);
+                const ease = 1 - Math.pow(1 - t, 3);
+                el.textContent = Math.round(ease * target) + suffix;
+                if (t < 1) requestAnimationFrame(step);
+            }
+            requestAnimationFrame(step);
+        }
+        const counters = document.querySelectorAll('.stat-number[data-count]');
+        const obs = new IntersectionObserver(entries => {
+            entries.forEach(e => { if (e.isIntersecting) { animateCounter(e.target); obs.unobserve(e.target); } });
+        }, { threshold: 0.5 });
+        counters.forEach(c => obs.observe(c));
+    })();
+
+    // ── Card 3D tilt ──
+    document.querySelectorAll('.card, .feature-card, .testimonial-card').forEach(card => {
+        card.addEventListener('mousemove', e => {
+            const rect = card.getBoundingClientRect();
+            const dx = (e.clientX - rect.left - rect.width/2) / (rect.width/2);
+            const dy = (e.clientY - rect.top - rect.height/2) / (rect.height/2);
+            card.style.transform = `translateY(-4px) rotateX(${-dy*4}deg) rotateY(${dx*4}deg)`;
+            card.style.transition = 'transform 0.08s ease';
+        });
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = ''; card.style.transition = 'transform 0.45s ease';
+        });
+    });
+
+    // ══════════════════════════════════════
+    //  PER-PAGE ANIMATIONS
+    // ══════════════════════════════════════
+
+    // ── Banner mini-particle canvases ──
+    function initBannerCanvas(canvas) {
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        let W, H;
+        const COUNT = 30;
+        const pts = [];
+        function resize() { W = canvas.width = canvas.offsetWidth; H = canvas.height = canvas.offsetHeight; }
+        resize();
+        new ResizeObserver(resize).observe(canvas);
+        const rand = (a,b) => a + Math.random()*(b-a);
+        for (let i=0;i<COUNT;i++) pts.push({x:rand(0,1200),y:rand(0,400),vx:rand(-0.25,0.25),vy:rand(-0.18,0.18),r:rand(1,2.2),a:rand(0.2,0.55)});
+        function draw() {
+            if (!canvas.closest('.page.active') && !canvas.closest('.page-banner')) return requestAnimationFrame(draw);
+            ctx.clearRect(0,0,W,H);
+            for(let i=0;i<pts.length;i++) {
+                for(let j=i+1;j<pts.length;j++) {
+                    const dx=pts[i].x-pts[j].x, dy=pts[i].y-pts[j].y, d=Math.sqrt(dx*dx+dy*dy);
+                    if(d<90){ctx.beginPath();ctx.moveTo(pts[i].x,pts[i].y);ctx.lineTo(pts[j].x,pts[j].y);ctx.strokeStyle=`rgba(201,168,76,${0.1*(1-d/90)})`;ctx.lineWidth=0.7;ctx.stroke();}
+                }
+            }
+            pts.forEach(p=>{
+                ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=`rgba(240,217,138,${p.a})`;ctx.fill();
+                p.x+=p.vx;p.y+=p.vy;
+                if(p.x<0)p.x=W;if(p.x>W)p.x=0;if(p.y<0)p.y=H;if(p.y>H)p.y=0;
+            });
+            requestAnimationFrame(draw);
+        }
+        requestAnimationFrame(draw);
+    }
+    document.querySelectorAll('.banner-canvas').forEach(c => initBannerCanvas(c));
+
+    // ── Generic stagger observer (runs on page switch too) ──
+    function runStagger(root) {
+        root = root || document;
+        const items = root.querySelectorAll('.stagger-item:not(.visible), .expertise-item:not(.visible), .reveal:not(.visible)');
+        if (!('IntersectionObserver' in window)) { items.forEach(el=>el.classList.add('visible')); return; }
+        const obs = new IntersectionObserver((entries, o) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    // respect delay already set inline, or stagger by index
+                    const el = e.target;
+                    const idx = el.dataset.staggerIdx || 0;
+                    const delay = parseFloat(el.style.transitionDelay || el.style.animationDelay || 0) || (idx * 0.08);
+                    setTimeout(() => el.classList.add('visible'), delay * 1000);
+                    o.unobserve(el);
+                }
+            });
+        }, { threshold: 0.1 });
+        items.forEach((el, i) => { el.dataset.staggerIdx = i; obs.observe(el); });
+    }
+
+    // ── Banner content stagger on page load ──
+    function animateBannerContent(page) {
+        const banner = page.querySelector('.page-banner .banner-content');
+        if (!banner) return;
+        banner.querySelectorAll('.eyebrow, h2, p').forEach((el, i) => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.55s ease, transform 0.55s ease';
+            setTimeout(() => {
+                el.style.opacity = '1';
+                el.style.transform = 'none';
+            }, 80 + i * 130);
+        });
+    }
+
+    // ── Animated about stat counters ──
+    function initAboutCounters(root) {
+        root = root || document;
+        root.querySelectorAll('.num[data-count]').forEach(el => {
+            const obs = new IntersectionObserver(entries => {
+                entries.forEach(e => {
+                    if (!e.isIntersecting) return;
+                    const target = parseInt(el.dataset.count);
+                    const suffix = el.dataset.suffix || '';
+                    const dur = 1400, start = performance.now();
+                    function step(now) {
+                        const t = Math.min((now-start)/dur,1);
+                        const ease = 1-Math.pow(1-t,3);
+                        el.textContent = Math.round(ease*target)+suffix;
+                        if(t<1) requestAnimationFrame(step);
+                    }
+                    requestAnimationFrame(step);
+                    obs.unobserve(el);
+                });
+            }, { threshold: 0.6 });
+            obs.observe(el);
+        });
+    }
+    initAboutCounters();
+
+    // ── Testimonial star stagger ──
+    function animateStars(root) {
+        root = root || document;
+        root.querySelectorAll('.testimonial-card .star').forEach((star, i) => {
+            const obs = new IntersectionObserver(entries => {
+                entries.forEach(e => {
+                    if (!e.isIntersecting) return;
+                    setTimeout(() => {
+                        star.style.opacity = '1';
+                        star.style.transform = 'none';
+                    }, i % 5 * 80);
+                    obs.unobserve(star);
+                });
+            }, { threshold: 0.3 });
+            obs.observe(star);
+        });
+    }
+    animateStars();
+
+    // ── Service category entrance (slide up with gold line sweep) ──
+    function animateServiceCategories(root) {
+        root = root || document;
+        root.querySelectorAll('.service-category').forEach((cat, ci) => {
+            cat.style.opacity = '0';
+            cat.style.transform = 'translateY(28px)';
+            cat.style.transition = 'opacity 0.55s ease, transform 0.55s ease';
+            const obs = new IntersectionObserver(entries => {
+                entries.forEach(e => {
+                    if (!e.isIntersecting) return;
+                    setTimeout(() => {
+                        cat.style.opacity = '1';
+                        cat.style.transform = 'none';
+                    }, ci * 120);
+                    obs.unobserve(cat);
+                });
+            }, { threshold: 0.08 });
+            obs.observe(cat);
+        });
+    }
+
+    // ── Contact card pulse on enter ──
+    function animateContactCards(root) {
+        root = root || document;
+        root.querySelectorAll('.contact-info-card').forEach((card, i) => {
+            const obs = new IntersectionObserver(entries => {
+                entries.forEach(e => {
+                    if (!e.isIntersecting) return;
+                    card.animate([
+                        { opacity: 0, transform: 'translateY(24px) scale(0.97)' },
+                        { opacity: 1, transform: 'none' }
+                    ], { duration: 480, delay: i * 120, fill: 'forwards', easing: 'cubic-bezier(0.22,1,0.36,1)' });
+                    obs.unobserve(card);
+                });
+            }, { threshold: 0.2 });
+            obs.observe(card);
+        });
+    }
+    animateContactCards();
+
+    // ── Form field sequential entrance ──
+    function animateFormFields(root) {
+        root = root || document;
+        root.querySelectorAll('.form-wrapper .form-group, .form-wrapper .form-row').forEach((el, i) => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateX(-16px)';
+            el.style.transition = `opacity 0.4s ease ${i*0.05}s, transform 0.4s ease ${i*0.05}s`;
+            const obs = new IntersectionObserver(entries => {
+                entries.forEach(e => {
+                    if (!e.isIntersecting) return;
+                    setTimeout(() => { el.style.opacity = '1'; el.style.transform = 'none'; }, i * 50);
+                    obs.unobserve(el);
+                });
+            }, { threshold: 0.1 });
+            obs.observe(el);
+        });
+    }
+    animateFormFields();
+
+    // ── Hook into showPage to run all animations ──
+    const _origShowPage = showPage;
+    showPage = function(name) {
+        _origShowPage(name);
+        const pageEl = document.getElementById(name);
+        if (!pageEl) return;
+        // re-run all animators on newly shown page
+        setTimeout(() => {
+            animateBannerContent(pageEl);
+            runStagger(pageEl);
+            initAboutCounters(pageEl);
+            animateStars(pageEl);
+            animateServiceCategories(pageEl);
+            animateContactCards(pageEl);
+            animateFormFields(pageEl);
+            // re-attach tilt to any new cards
+            pageEl.querySelectorAll('.card, .feature-card, .testimonial-card').forEach(card => {
+                card.addEventListener('mousemove', e => {
+                    const rect = card.getBoundingClientRect();
+                    const dx = (e.clientX - rect.left - rect.width/2) / (rect.width/2);
+                    const dy = (e.clientY - rect.top - rect.height/2) / (rect.height/2);
+                    card.style.transform = `translateY(-4px) rotateX(${-dy*4}deg) rotateY(${dx*4}deg)`;
+                    card.style.transition = 'transform 0.08s ease';
+                });
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = ''; card.style.transition = 'transform 0.45s ease';
+                });
+            });
+        }, 60);
+    };
+
+    // run on home page on load
+    setTimeout(() => {
+        runStagger(document.getElementById('home'));
+    }, 200);
+
+</script>
+</body>
+</html>
